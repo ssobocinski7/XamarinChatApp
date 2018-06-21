@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinApp.Views.ConversationPage"
+             Title="{Binding FriendUsername}">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{StaticResource PrimaryBackgroundColor}">
+            <ScrollView x:Name="MessagesScrollView"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
+
+                <StackLayout x:Name="MessagesView"
+                             VerticalOptions="FillAndExpand"
+                             Margin="20">
+
+
+                </StackLayout>
+            </ScrollView>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="EndAndExpand"
+                         BackgroundColor="{StaticResource ThirdBackgroundColor}">
+                
+                    <Entry HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Margin="10, 0, 0, 0"
+                           Text="{Binding MessageContents}"
+                           />
+
+                    <Button HeightRequest="45"
+                        WidthRequest="45"
+                        HorizontalOptions="End"
+                        VerticalOptions="CenterAndExpand"
+                        BackgroundColor="{StaticResource SecondaryBackgroundColor}"
+                        BorderRadius="23"
+                        Margin="10"
+                        Command="{Binding SendMessageCommand}">
+
+                    </Button>
+                </StackLayout>
+        
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

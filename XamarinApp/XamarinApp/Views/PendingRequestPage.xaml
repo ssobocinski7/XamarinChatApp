@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinApp.Views.PendingRequestPage">
+    <ContentPage.Content>
+        <StackLayout
+            BackgroundColor="{StaticResource PrimaryBackgroundColor}">
+            <ListView ItemsSource="{Binding Requests}" RowHeight="60">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid VerticalOptions="FillAndExpand"
+                                  HorizontalOptions="FillAndExpand"
+                                  HeightRequest="60">
+
+                                <Image Source="http://www.myiconfinder.com/uploads/iconsets/256-256-c0829a49b2acd49adeab380f70eb680a-accept.png"
+                                       WidthRequest="40"
+                                       HeightRequest="40" 
+                                       Aspect="AspectFit" 
+                                       HorizontalOptions="StartAndExpand" 
+                                       VerticalOptions="CenterAndExpand"
+                                       Margin="10, 0, 10, 0">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding AcceptRequestCommand}" CommandParameter="{Binding SenderID}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+
+                                <Image Source="http://www.myiconfinder.com/uploads/iconsets/256-256-4509ba2b6663b1e81748e24eb16204d2-cross.png"
+                                       WidthRequest="40"
+                                       HeightRequest="40" 
+                                       Aspect="AspectFit" 
+                                       HorizontalOptions="StartAndExpand" 
+                                       VerticalOptions="CenterAndExpand"
+                                       Margin="60, 0, 10, 0">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding RejectRequestCommand}" CommandParameter="{Binding SenderID}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+
+                                <Label Text="{Binding SenderUsername}" 
+                                           FontSize="Large" 
+                                           HorizontalOptions="EndAndExpand" 
+                                           VerticalOptions="CenterAndExpand"
+                                           Margin="20, 10, 20, 10"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

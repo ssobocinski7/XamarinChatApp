@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinApp.Views.LoginPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout
+            Padding="40"
+            BackgroundColor="{StaticResource PrimaryBackgroundColor}">
+            <Label Text="Please log in!"
+                   HorizontalOptions="Center"
+                   FontSize="Large"
+                   TextColor="{StaticResource PrimaryFontColor}"
+                   Margin="20"/>
+            <StackLayout
+                VerticalOptions="FillAndExpand">
+                <Entry x:Name="LoginEntry" Placeholder="Login" Text="{Binding UserName}"/>
+                <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="true" Text="{Binding Password}"/>
+            </StackLayout>
+            <Button Margin="20, 20, 20, 5" Text="Sign In" BackgroundColor="{StaticResource ThirdBackgroundColor}" Command="{Binding LoginCommand}"/>
+            <Button Margin="20, 5, 20, 5" Text="Register" BackgroundColor="{StaticResource SecondaryBackgroundColor}" Command="{Binding RegisterCommand}" TextColor="{StaticResource PrimaryFontColor}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

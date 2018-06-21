@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinApp.Views.MainPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout
+            BackgroundColor="{StaticResource PrimaryBackgroundColor}">
+            <Label Text="Friends list" 
+                   FontSize="Large"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="20"/>
+            <ScrollView
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <ListView ItemsSource="{Binding Friends}" RowHeight="70">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid MinimumHeightRequest="70">
+                                    <Image Source="https://www.yourfirstpatient.com/assets/default-user-avatar-thumbnail@2x-ad6390912469759cda3106088905fa5bfbadc41532fbaa28237209b1aa976fc9.png"
+                                       WidthRequest="50"
+                                       HeightRequest="50" 
+                                       Aspect="AspectFit" 
+                                       HorizontalOptions="StartAndExpand" 
+                                       VerticalOptions="CenterAndExpand"
+                                       Margin="10, 0, 10, 0"/>
+
+                                    <Label Text="{Binding UserName}" 
+                                           FontSize="Large" 
+                                           VerticalOptions="CenterAndExpand" 
+                                           HorizontalOptions="EndAndExpand"
+                                           Margin="10, 0, 30, 0"/>
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenConversationCommand}" CommandParameter="{Binding UserID}"/>
+                                    </Grid.GestureRecognizers>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+            <StackLayout
+                Orientation="Horizontal"
+                HorizontalOptions="Fill">
+                <Button
+                Text="Add new friends"
+                Margin="15, 20, 5, 20"
+                BackgroundColor="{StaticResource ThirdBackgroundColor}"
+                Command="{Binding AddFriendCommand}"
+                HorizontalOptions="StartAndExpand"
+                />
+                <Button
+                Text="Pending requests"
+                TextColor="{StaticResource PrimaryFontColor}"
+                Margin="5, 20, 15, 20"
+                BackgroundColor="{StaticResource SecondaryBackgroundColor}"
+                Command="{Binding PendingRequestCommand}"
+                HorizontalOptions="EndAndExpand"
+                />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
